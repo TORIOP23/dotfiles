@@ -11,6 +11,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 plugins=(
     git
     zsh-autosuggestions
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -19,33 +20,32 @@ source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
 
 # smarter cd command
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 
 # fzf
-source <(fzf --zsh)
+# source <(fzf --zsh)
 
 # User configuration
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-
 source /usr/local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
+#----- Vim Editing modes & keymaps ------
+set -o vi
+export EDITOR=nvim
+export VISUAL=nvim
+
+#----------------------------------------
+
+# -------------------ALIAS----------------------
+# For a full list of active aliases, run `alias`.
+
 alias ga="git add ."
-alias gs="git status -s"
+# alias gs="git status -s"
 alias gc='git commit -m'
+alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
+
+# ---------------------------------------
+
 
 # pnpm
 export PNPM_HOME="/Users/$USER/Library/pnpm"
